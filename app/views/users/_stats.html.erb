@@ -1,0 +1,19 @@
+<div class="stats">
+  <% stats.each do |stat| %>
+    <p class="stat">
+      <span class="stat-name"><%= stat.name %></span>
+      <span class="stat-level-thermometer">
+        <% if stat.level %>
+          <span class="stat-level-value <%= stat.rank %>" style="width: <%= stat.level %>%;"></span>
+        <% end %>
+      </span>
+    </p>
+  <% end %>
+  
+  <div class="stat-guides">
+    <div class="stat-guide advanced-beginner"></div>
+    <div class="stat-guide competent"></div>
+    <div class="stat-guide proficient"></div>
+    <div class="stat-guide master"></div>
+  </div>
+</div>

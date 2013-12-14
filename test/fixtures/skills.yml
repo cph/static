@@ -1,0 +1,59 @@
+ruby:
+  name: Ruby
+  category: Language
+  description: Fluency with Ruby
+
+javascript:
+  name: Javascript/Coffeescript
+  category: Language
+  description: Fluency with Javascript/Coffeescript
+
+html:
+  name: HTML/CSS
+  category: Language
+  description: Fluency with HTML/CSS
+
+sql:
+  name: SQL
+  category: Language
+  description: Fluency with SQL
+
+git:
+  name: Git
+  category: Tool
+  description: Dexterity with Git
+
+shell:
+  name: Shell/Kernel
+  category: Tool
+  description: Dexterity with the Shell
+
+editor:
+  name: Text Editor
+  category: Tool
+  description: Dexterite with a Text Editor
+
+rails:
+  name: Rails
+  category: Framework
+  description: Knowledge of Rails
+
+dom:
+  name: jQuery/DOM
+  category: Framework
+  description: Knowledge of jQuery/DOM
+
+http:
+  name: HTTP/TCP/IP
+  category: Framework
+  description: Knowledge of HTTP/TCP/IP
+
+oop:
+  name: Object-Oriented Programming
+  category: Technique
+  description: Mastery of Object-Oriented Programming techniques
+
+testing:
+  name: Testing
+  category: Technique
+  description: Mastery of Testing techniques

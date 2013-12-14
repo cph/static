@@ -1,0 +1,116 @@
+.cards {
+  display: block;
+  margin: 0;
+  padding: 0;
+  
+  &::after {
+    content: '.';
+    clear: both;
+  }
+}
+
+.user.card {
+  display: block;
+  float: left;
+  width: 240px;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 0.5em;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
+  border: 1 px solid rgba(0, 0, 0, 0.25);
+}
+
+.user-name {
+  display: block;
+  font-size: 1.5em;
+  margin-left: 100px;
+}
+
+.card .avatar {
+  width: 80px;
+  height: 80px;
+  float: left;
+  margin: 0 1em 1em 0;
+}
+
+.card .stats {
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  clear: both;
+}
+
+.card .stat {
+  display: block;
+  white-space: nowrap;
+  font-size: 0.75em;
+//  line-height: 1.13636em; // 1 / 0.88
+  line-height: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+
+.stat-name {
+  display: inline-block;
+  width: 92px;
+  margin-right: 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.stat-level-thermometer {
+  display: inline-block;
+  width: 120px;
+  height: 6px;
+  position: relative;
+  border: 1px solid #efefef;
+}
+
+.stat-level-value {
+  display: block;
+  height: 6px;
+  
+//  &.novice            { background-color: lighten(#2A90D5, 8%); }
+//  &.advanced-beginner { background-color: darken(#2A90D5, 0%); }
+//  &.competent         { background-color: darken(#2A90D5, 8%); }
+//  &.proficient        { background-color: darken(#2A90D5, 16%); }
+//  &.master            { background-color: darken(#2A90D5, 24%); }
+  &.novice            { background-color: darken(#2A90D5, 24%); }
+  &.advanced-beginner { background-color: darken(#2A90D5, 16%); }
+  &.competent         { background-color: darken(#2A90D5, 8%); }
+  &.proficient        { background-color: darken(#2A90D5, 0%); }
+  &.master            { background-color: lighten(#2A90D5, 8%); }
+//  &.novice            { background-color: adjust-hue(#2A90D5, -0deg); }
+//  &.advanced-beginner { background-color: adjust-hue(#2A90D5, -20deg); }
+//  &.competent         { background-color: adjust-hue(#2A90D5, -40deg); }
+//  &.proficient        { background-color: adjust-hue(#2A90D5, -60deg); }
+//  &.master            { background-color: adjust-hue(#2A90D5, -80deg); }
+}
+
+.stat-level {
+  display: inline-block;
+  width: 40px;
+  text-align: right;
+}
+
+.stat-guides {
+  position: absolute;
+  left: 100px;
+  height: 100%;
+  top: 0;
+  width: 120px;
+}
+
+.stat-guide {
+  position: absolute;
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+  height: 100%;
+  
+  &.advanced-beginner { left: 24%; }
+  &.competent { left: 48%; }
+  &.proficient { left: 72%; }
+  &.master { left: 96%; }
+}

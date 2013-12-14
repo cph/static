@@ -1,1 +1,9 @@
-<h2><%= current_user.email %></h2>
+<ul id="users" class="cards">
+  <% @users.each do |user| %>
+    <li class="user card">
+      <%= avatar_for(user, size: 160) %>
+      <span class="user-name"><%= user.name %></span>
+      <%= render "users/stats", stats: user.stats %>
+    </li>
+  <% end %>
+</ul>
