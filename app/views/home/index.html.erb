@@ -5,14 +5,25 @@
       <span class="user-name"><%= user.name %></span>
       <% if @assessment.complete?(of: user) %>
         <%= render "users/stats", stats: @assessment.of(user) %>
-      <% elsif user == current_user %>
-        <p>Not everyone has assessed you yet.</p>
-      <% elsif @assessment.complete?(of: user, by: current_user) %>
-        <p>You have completed your assessment of <%= user.name %>;
-        but not everyone has assessed this user.</p>
-        <%= link_to "Edit my Assessment", assessment_form_path(@assessment, user), class: "btn btn-primary" %>
       <% else %>
-        <%= link_to "Assess", assessment_form_path(@assessment, user), class: "btn btn-primary" %>
+        <%= render "users/stats", stats: user.skills.map { |skill| Stat.new(skill, nil) } %>
+        
+        <span class="user-incomplete-assessment">
+          <% if user == current_user %>
+            Not everyone has assessed you yet
+          <% elsif @assessment.complete?(of: user, by: current_user) %>
+            You have completed your assessment of <%= user.name %>;
+            but not everyone has assessed this user yet<br /><br />
+            <center>
+              <%= link_to "Edit my Assessment", assessment_form_path(@assessment, user), class: "btn" %>
+            </center>
+          <% else %>
+            You have not completed your assessment of <%= user.name %><br /><br />
+            <center>
+              <%= link_to "Assess", assessment_form_path(@assessment, user), class: "btn btn-danger" %>
+            </center>
+          <% end %>
+        </span>
       <% end %>
     </li>
   <% end %>

@@ -1,3 +1,5 @@
+$stat-width: 108px;
+
 .cards {
   display: block;
   margin: 0;
@@ -18,6 +20,7 @@
   border-radius: 0.5em;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
   border: 1 px solid rgba(0, 0, 0, 0.25);
+  position: relative;
 }
 
 .user-name {
@@ -39,6 +42,10 @@
   padding: 0;
   position: relative;
   clear: both;
+  
+  &.incomplete {
+    color: #e4e4e4;
+  }
 }
 
 .card .stat {
@@ -61,7 +68,7 @@
 
 .stat-level-thermometer {
   display: inline-block;
-  width: 120px;
+  width: $stat-width;
   height: 6px;
   position: relative;
   border: 1px solid #efefef;
@@ -104,7 +111,7 @@
   left: 100px;
   height: 100%;
   top: 0;
-  width: 120px;
+  width: $stat-width;
 }
 
 .stat-guide {
@@ -118,4 +125,24 @@
   &.competent { left: 48%; }
   &.proficient { left: 72%; }
   &.master { left: 96%; }
+}
+
+
+.user-incomplete-assessment {
+  display: block;
+  position: absolute;
+  top: 120px;
+  padding: 1em;
+  width: 212px;
+  font-weight: bold;
+  color: black;
+  
+  background: rgba(255,255,255, 0.75);
+  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.75);
+  
+  .btn { font-weight: normal; }
+}
+
+.stats.incomplete .stat-guide {
+  background-color: rgba(0, 0, 0, 0.03);
 }
