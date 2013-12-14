@@ -106,7 +106,7 @@ $stat-width: 108px;
   height: 20px;
 }
 
-.stat-guides {
+.card .stat-guides {
   position: absolute;
   left: 100px;
   height: 100%;
@@ -114,19 +114,9 @@ $stat-width: 108px;
   width: $stat-width;
 }
 
-.stat-guide {
-  position: absolute;
-  width: 1px;
-  background-color: rgba(0, 0, 0, 0.05);
+.card .stat-guide { 
   z-index: 1;
-  height: 100%;
-  
-  &.advanced-beginner { left: 24%; }
-  &.competent { left: 48%; }
-  &.proficient { left: 72%; }
-  &.master { left: 96%; }
 }
-
 
 .user-incomplete-assessment {
   display: block;

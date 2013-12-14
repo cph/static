@@ -1,0 +1,12 @@
+.stat-guide {
+  position: absolute;
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.05);
+  height: 100%;
+  
+  &.novice { left: 0; }
+  &.advanced-beginner { left: 24%; }
+  &.competent { left: 48%; }
+  &.proficient { left: 72%; }
+  &.master { left: 96%; }
+}

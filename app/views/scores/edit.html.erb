@@ -2,15 +2,25 @@
 <h2>Assessment of <%= user.name %></h2>
 
 <%= form_tag nil, method: :put, class: "form-horizontal", role: "form" do %>
-  <% user.skills.each do |skill| %>
-    <% score = @scores.find { |score| score.skill_id == skill.id } %>
-    <div class="control-group">
-      <label for="skill_<%= skill.id %>" class="control-label"><%= skill.name %></label>
-      <div class="controls">
-        <input id="skill_<%= skill.id %>" name="skills[<%= skill.id %>]" type="text" data-slider="true" value="<%= score ? score.value : 0 %>" data-slider-range="0,100">
-      </div>
+  <div class="stats-form">
+    <div class="stat-guides">
+      <div class="stat-guide novice"><img src="/novice.svg" /></div>
+      <div class="stat-guide advanced-beginner"><img src="/advanced-beginner.svg" /></div>
+      <div class="stat-guide competent"><img src="/competent.svg" /></div>
+      <div class="stat-guide proficient"><img src="/proficient.svg" /></div>
+      <div class="stat-guide master"><img src="/master.svg" /></div>
     </div>
-  <% end %>
+    
+    <% user.skills.each do |skill| %>
+      <% score = @scores.find { |score| score.skill_id == skill.id } %>
+      <div class="control-group">
+        <label for="skill_<%= skill.id %>" class="control-label"><%= skill.name %></label>
+        <div class="controls">
+          <input id="skill_<%= skill.id %>" name="skills[<%= skill.id %>]" type="text" data-slider="true" value="<%= score ? score.value : 0 %>" data-slider-range="0,100">
+        </div>
+      </div>
+    <% end %>
+  </div>
   
   <button type="submit" class="btn btn-primary">Submit</button>
   <%= link_to "Cancel", root_path, class: "btn" %>

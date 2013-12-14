@@ -1,0 +1,31 @@
+$stat-width: 400px;
+
+.stats-form {
+  position: relative;
+  margin-top: 40px;
+  
+  .slider {
+    width: $stat-width;
+  }
+  
+  .stat-guides {
+    position: absolute;
+    left: 189px;
+    height: 100%;
+    top: 0;
+    width: $stat-width;
+  }
+  
+  .stat-guide {
+    img {
+      width: 32px;
+      height: 32px;
+      max-width: none;
+      position: relative;
+      left: -16px;
+      top: -31px;
+    }
+    
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
