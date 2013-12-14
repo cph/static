@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export RAILS_ENV=test
+bundle
+bundle exec rake ci:setup:minitest test COVERAGE=on CI=true
+cp spec/reports/*.xml test/reports/

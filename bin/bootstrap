@@ -1,0 +1,17 @@
+#!/bin/bash
+# Everything in this bootstrap script
+# is idempotent. It is OK to run again
+# on an existing project if you are
+# uncertain whether it is set up.
+
+git submodule update --init
+bundle
+if [[ -e `which ep` ]] ; then ep copy-config static ; fi
+rake db:create
+rake db:migrate
+rake test
+powder link
+
+echo ""
+echo "If this is the first time you've cloned static"
+echo "You might want to run \`bundle exec rake db:seed\`"

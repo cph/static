@@ -26,4 +26,16 @@ Static::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  
+  # Test emails in development mode by opening them with LetterOpener
+  config.action_mailer.delivery_method = :letter_opener
+  
+  # Figure out the host to use in emails from the port
+  # the server was run with
+  server_options = Rack::Server::Options.new.parse!(ARGV.dup)
+  config.action_mailer.default_url_options = {
+    host: "localhost",
+    port: server_options.fetch(:Port, "3000")
+  }
+  $stderr.puts "[config] default host: localhost:#{config.action_mailer.default_url_options[:port]}"
 end
