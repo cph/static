@@ -31,8 +31,9 @@
           <%= yield %>
         </div>
       </div><!--/row-->
-
     </div><!-- /container -->
+
+    <%= render partial: "layouts/tester_bar" if Rails.env.development? -%>
 
     <!-- Javascripts
     ================================================== -->
