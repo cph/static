@@ -1,10 +1,4 @@
-class Stat < ActiveRecord::Base
-  
-  belongs_to :user
-  belongs_to :skill
-  
-  validates :user, :skill, presence: true
-  validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 100, allow_nil: true }
+class Stat < Struct.new(:skill, :level)
   
   delegate :name, :category, :description, to: :skill
   

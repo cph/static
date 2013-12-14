@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require font-awesome
+ *= require jquery.simple-slider
  *= require_tree .
  */

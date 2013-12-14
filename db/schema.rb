@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131214163115) do
+ActiveRecord::Schema.define(version: 20131214182425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assessments", force: true do |t|
+    t.datetime "completed_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scores", force: true do |t|
+    t.integer  "scorer_id"
+    t.integer  "user_id"
+    t.integer  "value",         null: false
+    t.integer  "assessment_id"
+    t.integer  "skill_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scores", ["assessment_id"], name: "index_scores_on_assessment_id", using: :btree
+  add_index "scores", ["scorer_id", "user_id", "assessment_id", "skill_id"], name: "index_scores_on_all_associations", unique: true, using: :btree
+  add_index "scores", ["scorer_id"], name: "index_scores_on_scorer_id", using: :btree
+  add_index "scores", ["skill_id"], name: "index_scores_on_skill_id", using: :btree
+  add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
 
   create_table "skills", force: true do |t|
     t.string   "name",        null: false
@@ -23,17 +45,6 @@ ActiveRecord::Schema.define(version: 20131214163115) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "stats", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "skill_id"
-    t.integer  "level"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "stats", ["skill_id"], name: "index_stats_on_skill_id", using: :btree
-  add_index "stats", ["user_id"], name: "index_stats_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

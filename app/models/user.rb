@@ -15,12 +15,26 @@ class User < ActiveRecord::Base
   
   validates :name, presence: true
   
-  after_create :associate_with_default_skills
+  def self.except(user_or_id)
+    id = user_or_id.is_a?(User) ? user_or_id.id : user_or_id
+    where(arel_table[:id].not_eq(id))
+  end
   
-private
+  def skills
+    Skill.all # differentiate later
+  end
   
-  def associate_with_default_skills
-    stats << Skill.default_for(self).map { |skill| Stat.new(skill: skill) }
+  def teammates
+    User.except(self)
+  end
+  
+  def score!(user, skill, value, assessment)
+    Score.create!(
+      scorer: self,
+      user: user,
+      skill: skill,
+      value: value,
+      assessment: assessment)
   end
   
 end

@@ -3,7 +3,17 @@
     <li class="user card">
       <%= avatar_for(user, size: 160) %>
       <span class="user-name"><%= user.name %></span>
-      <%= render "users/stats", stats: user.stats %>
+      <% if @assessment.complete?(of: user) %>
+        <%= render "users/stats", stats: @assessment.of(user) %>
+      <% elsif user == current_user %>
+        <p>Not everyone has assessed you yet.</p>
+      <% elsif @assessment.complete?(of: user, by: current_user) %>
+        <p>You have completed your assessment of <%= user.name %>;
+        but not everyone has assessed this user.</p>
+        <%= link_to "Edit my Assessment", assessment_form_path(@assessment, user), class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "Assess", assessment_form_path(@assessment, user), class: "btn btn-primary" %>
+      <% end %>
     </li>
   <% end %>
 </ul>
