@@ -64,7 +64,7 @@ var __slice = [].slice,
         marginTop: this.dragger.outerWidth() / -2,
         marginLeft: this.dragger.outerWidth() / -2
       });
-      this.track.mousedown(function(e) {
+      this.slider.mousedown(function(e) {
         return _this.trackEvent(e);
       });
       if (this.settings.highlight) {
