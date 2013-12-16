@@ -79,18 +79,22 @@ YAML
 
 
 Assessment.delete_all
-Score.delete_all
-
 assessment = Assessment.create!
 
-# Five users have completed the assessment
-scorers = User.limit(5).to_a
 
-User.find_each do |user|
-  scorers.each do |scorer|
-    next if scorer == user
-    user.skills.each do |skill|
-      scorer.score!(user, skill, rand(101), assessment)
+
+if Rails.env.development?
+  Score.delete_all
+
+  # Five users have completed the assessment
+  scorers = User.limit(5).to_a
+
+  User.find_each do |user|
+    scorers.each do |scorer|
+      next if scorer == user
+      user.skills.each do |skill|
+        scorer.score!(user, skill, rand(101), assessment)
+      end
     end
   end
 end
