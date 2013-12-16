@@ -48,3 +48,7 @@ group :test do
   gem "rr"
   gem "shoulda-context"
 end
+
+group :production do
+  gem "rails_12factor"
+end
