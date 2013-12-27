@@ -78,21 +78,34 @@ $stat-width: 108px;
   display: block;
   height: 6px;
   
-//  &.novice            { background-color: lighten(#2A90D5, 8%); }
-//  &.advanced-beginner { background-color: darken(#2A90D5, 0%); }
-//  &.competent         { background-color: darken(#2A90D5, 8%); }
-//  &.proficient        { background-color: darken(#2A90D5, 16%); }
-//  &.master            { background-color: darken(#2A90D5, 24%); }
-  &.novice            { background-color: darken(#2A90D5, 24%); }
-  &.advanced-beginner { background-color: darken(#2A90D5, 16%); }
-  &.competent         { background-color: darken(#2A90D5, 8%); }
-  &.proficient        { background-color: darken(#2A90D5, 0%); }
-  &.master            { background-color: lighten(#2A90D5, 8%); }
-//  &.novice            { background-color: adjust-hue(#2A90D5, -0deg); }
-//  &.advanced-beginner { background-color: adjust-hue(#2A90D5, -20deg); }
-//  &.competent         { background-color: adjust-hue(#2A90D5, -40deg); }
-//  &.proficient        { background-color: adjust-hue(#2A90D5, -60deg); }
-//  &.master            { background-color: adjust-hue(#2A90D5, -80deg); }
+  &.stat-level-group { height: 4px; }
+  &.stat-level-personal { height: 2px; }
+}
+
+.stat-level-group { background-color: #a5d118; }
+.stat-level-personal { background-color: #32a22d; }
+
+dl.stat-key {
+  font-size: 0.75em;
+  line-height: 1.25em;
+  margin: 20px 0 0 100px;
+  
+  dt {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 5px 0 12px;
+  }
+  dd {
+    margin: 0;
+    display: inline;
+    line-height: 1.25em;
+    
+    &::after {
+      content: '\a';
+      white-space: pre;
+    }
+  }
 }
 
 .stat-level {
@@ -102,8 +115,8 @@ $stat-width: 108px;
 }
 
 .stat-rank {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 .card .stat-guides {

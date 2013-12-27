@@ -2,9 +2,12 @@
   <% stats.each do |stat| %>
     <p class="stat">
       <span class="stat-name"><%= stat.name %></span>
-      <span class="stat-level-thermometer">
+      <span class="stat-level-thermometer stat-average-level">
         <% if stat.level %>
-          <span class="stat-level-value <%= stat.rank %>" style="width: <%= stat.level %>%;"></span>
+          <span class="stat-level-group stat-level-value <%= stat.rank %>" style="width: <%= stat.level %>%;"></span>
+        <% end %>
+        <% if stat.my_level %>
+          <span class="stat-level-personal stat-level-value <%= stat.rank %>" style="width: <%= stat.my_level %>%;"></span>
         <% end %>
       </span>
       <img class="stat-rank" src="/<%= stat.rank %>.svg" />

@@ -4,9 +4,14 @@
       <%= avatar_for(user, size: 160) %>
       <span class="user-name"><%= user.name %></span>
       <% if @assessment.complete?(of: user) %>
-        <%= render "users/stats", stats: @assessment.of(user) %>
+        <dl class="stat-key">
+          <dt class="stat-level-group"></dt><dd>Group assessment</dd>
+          <dt class="stat-level-personal"></dt><dd>My assessment</dd>
+        </dl>
+        
+        <%= render "users/stats", stats: @assessment.results(of: user, by: current_user) %>
       <% else %>
-        <%= render "users/stats", stats: user.skills.map { |skill| Stat.new(skill, nil) } %>
+        <%= render "users/stats", stats: user.skills.map { |skill| Stat.new(skill) } %>
         
         <span class="user-incomplete-assessment">
           <% if user == current_user %>

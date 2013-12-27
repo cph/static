@@ -1,4 +1,4 @@
-class Stat < Struct.new(:skill, :level)
+class Stat < Struct.new(:skill, :level, :my_level)
   
   delegate :name, :category, :description, to: :skill
   

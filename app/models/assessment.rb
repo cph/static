@@ -6,9 +6,11 @@ class Assessment < ActiveRecord::Base
     first # for now there's only one
   end
   
-  def of(user)
+  def results(of: nil, by: nil)
+    user, scorer = of, by
     scores.for(user).group_by(&:skill).map do |skill, scores|
-      Stat.new(skill, scores.average(&:value))
+      my_score = scores.detect { |score| score.scorer_id == scorer.id }
+      Stat.new(skill, scores.average(&:value), my_score.try(:value))
     end
   end
   
