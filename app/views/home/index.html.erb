@@ -10,24 +10,35 @@
         </dl>
         
         <%= render "users/stats", stats: @assessment.results(of: user, by: current_user) %>
+        
+      <% elsif @assessment.complete?(of: user, by: current_user) %>
+        <dl class="stat-key">
+          <dt class="stat-level-group"></dt><dd>Group assessment</dd>
+          <dt class="stat-level-personal"></dt><dd>My assessment</dd>
+        </dl>
+        
+        <%= render "users/stats", stats: @assessment.results(of: user, only_by: current_user) %>
+        
+        <p class="user-partial-assessment">
+          You have completed your assessment of <%= user.name %>;
+          but not everyone has assessed this user yet
+        </p>
+        <center>
+          <%= link_to "Edit my Assessment", assessment_form_path(@assessment, user), class: "btn" %>
+        </center>
+        
       <% else %>
         <%= render "users/stats", stats: user.skills.map { |skill| Stat.new(skill) } %>
         
         <span class="user-incomplete-assessment">
           <% if user == current_user %>
-            Not everyone has assessed you yet
-          <% elsif @assessment.complete?(of: user, by: current_user) %>
-            You have completed your assessment of <%= user.name %>;
-            but not everyone has assessed this user yet<br /><br />
-            <center>
-              <%= link_to "Edit my Assessment", assessment_form_path(@assessment, user), class: "btn" %>
-            </center>
+            You have not completed your self-assessment yet.<br /><br />
           <% else %>
-            You have not completed your assessment of <%= user.name %><br /><br />
-            <center>
-              <%= link_to "Assess", assessment_form_path(@assessment, user), class: "btn btn-danger" %>
-            </center>
+            You have not completed your assessment of <%= user.name %>.<br /><br />
           <% end %>
+          <center>
+            <%= link_to "Assess", assessment_form_path(@assessment, user), class: "btn btn-danger" %>
+          </center>
         </span>
       <% end %>
     </li>

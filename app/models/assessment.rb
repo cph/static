@@ -6,11 +6,12 @@ class Assessment < ActiveRecord::Base
     first # for now there's only one
   end
   
-  def results(of: nil, by: nil)
-    user, scorer = of, by
+  def results(of: nil, by: nil, only_by: nil)
+    user, scorer = of, only_by || by
     scores.for(user).group_by(&:skill).map do |skill, scores|
-      my_score = scores.detect { |score| score.scorer_id == scorer.id }
-      Stat.new(skill, scores.average(&:value), my_score.try(:value))
+      my_score = scores.detect { |score| score.scorer_id == scorer.id }.try(:value)
+      group_score = scores.average(&:value) unless only_by
+      Stat.new(skill, group_score, my_score)
     end
   end
   
@@ -27,7 +28,7 @@ class Assessment < ActiveRecord::Base
     else
       # Every teammate has given this user
       # a score for each of his/her skills
-      user.skills.count * user.teammates.count == scores.count
+      user.skills.count * (user.teammates.count + 1) == scores.count
     end
   end
   

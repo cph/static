@@ -3,12 +3,8 @@
     <p class="stat">
       <span class="stat-name"><%= stat.name %></span>
       <span class="stat-level-thermometer stat-average-level">
-        <% if stat.level %>
-          <span class="stat-level-group stat-level-value <%= stat.rank %>" style="width: <%= stat.level %>%;"></span>
-        <% end %>
-        <% if stat.my_level %>
-          <span class="stat-level-personal stat-level-value <%= stat.rank %>" style="width: <%= stat.my_level %>%;"></span>
-        <% end %>
+        <span class="stat-level-group stat-level-value <%= stat.rank %>" style="width: <%= stat.level || 0 %>%;"></span>
+        <span class="stat-level-personal stat-level-value <%= stat.rank %>" style="width: <%= stat.my_level || 0 %>%;"></span>
       </span>
       <img class="stat-rank" src="/<%= stat.rank %>.svg" />
     </p>
