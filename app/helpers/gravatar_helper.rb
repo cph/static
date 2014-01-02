@@ -17,7 +17,7 @@ module GravatarHelper
     # http://en.gravatar.com/site/implement/ruby
     # http://en.gravatar.com/site/implement/url
     url = "http://www.gravatar.com/avatar/#{Digest::MD5::hexdigest(email)}?r=g&d=identicon"
-    url << "&s=#{options[:size]}" if options.key?(:size)
+    url << "&s=#{options[:size] * 2}" if options.key?(:size)
     url
   end
   

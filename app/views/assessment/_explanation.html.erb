@@ -1,0 +1,13 @@
+<% unless abilities.reject(&:blank?).none? %>
+  <div class="popover-container">
+    <div class="popover top">
+      <div class="arrow"></div>
+      <!-- <h3 class="popover-title"><%= title %></h3> -->
+      <div class="popover-content">
+        <% abilities.each do |ability| %>
+          <p class="ability"><%= format_ability(ability) %></p>
+        <% end%>
+      </div>
+    </div>
+  </div>
+<% end %>

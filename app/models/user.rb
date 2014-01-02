@@ -12,12 +12,19 @@ class User < ActiveRecord::Base
          # :omniauthable
   
   has_many :stats
+  has_many :user_assessments
   
   validates :name, presence: true
+  
+  default_scope order("last_name ASC")
   
   def self.except(user_or_id)
     id = user_or_id.is_a?(User) ? user_or_id.id : user_or_id
     where(arel_table[:id].not_eq(id))
+  end
+  
+  def name
+    "#{first_name} #{last_name}"
   end
   
   def skills

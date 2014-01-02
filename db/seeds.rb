@@ -1,76 +1,61 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
+require 'active_record/fixtures'
+
 def seed!(model, yaml)
   model.delete_all
   model.create! YAML.load(yaml)
 end
 
+def load_fixtures!(path)
+  table_name = File.basename(path, ".yml")
+  model = table_name.classify.constantize
+  ids = []
+  YAML.load_file(path).each do |slug, attributes|
+    id = ActiveRecord::Fixtures.identify(slug)
+    record = model.find_by_id(id) || model.new
+    record.attributes = attributes.merge(id: id)
+    record.save!
+    ids << id
+  end
+  model.where(model.arel_table[:id].not_in(ids)).delete_all
+end
 
 
-seed! Skill, <<-YAML
-- name: Ruby
-  category: Language
-  description: Fluency with Ruby
-- name: Javascript/Coffeescript
-  category: Language
-  description: Fluency with Javascript/Coffeescript
-- name: HTML/CSS
-  category: Language
-  description: Fluency with HTML/CSS
-- name: SQL
-  category: Language
-  description: Fluency with SQL
-- name: Git
-  category: Tool
-  description: Dexterity with Git
-- name: Shell/Kernel
-  category: Tool
-  description: Dexterity with the Shell
-- name: Text Editor
-  category: Tool
-  description: Dexterite with a Text Editor
-- name: Rails
-  category: Framework
-  description: Knowledge of Rails
-- name: jQuery/DOM
-  category: Framework
-  description: Knowledge of jQuery/DOM
-- name: HTTP/TCP/IP
-  category: Framework
-  description: Knowledge of HTTP/TCP/IP
-- name: Object-Oriented Programming
-  category: Technique
-  description: Mastery of Object-Oriented Programming techniques
-- name: Testing
-  category: Technique
-  description: Mastery of Testing techniques
-YAML
+
+load_fixtures! Rails.root.join("db", "skills.yml")
 
 
 
 seed! User, <<-YAML
-- name: Bob Lail
+- first_name: Bob
+  last_name: Lail
   email: bob.lail@cph.org
   password: password
   password_confirmation: password
-- name: Luke Booth
+- first_name: Luke
+  last_name: Booth
   email: luke.booth@cph.org
   password: password
   password_confirmation: password
-- name: Jesse Lewis
+- first_name: Jesse
+  last_name: Lewis
   email: jesse.lewis@cph.org
   password: password
   password_confirmation: password
-- name: Gene Doyel
+- first_name: Gene
+  last_name: Doyel
   email: gene.doyel@cph.org
   password: password
   password_confirmation: password
-- name: Ordie Page
+- first_name: Ordie
+  last_name: Page
   email: ordie.page@cph.org
   password: password
   password_confirmation: password
-- name: Kendall Park
+- first_name: Kendall
+  last_name: Park
   email: kendall.park@cph.org
   password: password
   password_confirmation: password
@@ -79,22 +64,22 @@ YAML
 
 
 Assessment.delete_all
-assessment = Assessment.create!
+assessment = Assessment.create!(assessors: User.all)
 
 
 
 if Rails.env.development?
   Score.delete_all
 
-  # Five users have completed the assessment
-  scorers = User.limit(5).to_a
-
-  User.find_each do |user|
-    scorers.each do |scorer|
-      next if scorer == user
-      user.skills.each do |skill|
-        scorer.score!(user, skill, rand(101), assessment)
-      end
-    end
-  end
+  # # Five users have completed the assessment
+  # scorers = User.limit(5).to_a
+  # 
+  # User.find_each do |user|
+  #   scorers.each do |scorer|
+  #     next if scorer == user
+  #     user.skills.each do |skill|
+  #       scorer.score!(user, skill, rand(101), assessment)
+  #     end
+  #   end
+  # end
 end

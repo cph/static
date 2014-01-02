@@ -2,17 +2,12 @@ class Stat < Struct.new(:skill, :level, :my_level)
   
   delegate :name, :category, :description, to: :skill
   
-  def complete?
+  def completed?
     level.present?
   end
   
-  def rank
-    return "none" unless complete?
-    return "novice" if level < 24
-    return "advanced-beginner" if level < 48
-    return "competent" if level < 72
-    return "proficient" if level < 96
-    return "master"
+  def to_int
+    level
   end
   
 end

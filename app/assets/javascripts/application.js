@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery.simple-slider
+//= require jquery.easing
 //= require_tree .

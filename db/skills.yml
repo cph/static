@@ -1,0 +1,226 @@
+
+ruby:
+  name: Ruby
+  shortname: Ruby
+  category: Language
+  description: Fluency with Ruby
+  novice_abilities:
+    - Can copy & paste Ruby code
+  advanced_beginner_abilities:
+    - Writes idiomatic Ruby
+    - Can evaluate gems
+  competent_abilities:
+    - Has written several gems
+    - Can explain Ruby's threading and method-lookup models
+  proficient_abilities:
+    - Has written Ruby in several paradigms (Object‑Oriented, Functional, Procedural) and contexts (Rails, Shell script, Mobile)
+  master_abilities:
+    - Contributes to Ruby
+
+javascript:
+  name: Javascript / Coffeescript
+  shortname: Javascript
+  category: Language
+  description: Fluency with Javascript/Coffeescript
+  novice_abilities:
+    - Can copy & paste Javascript code
+  advanced_beginner_abilities:
+    - Writes idiomatic Javascript
+    - Can evaluate third-party libraries
+    - Can traverse and manipulate the DOM with jQuery
+  competent_abilities:
+    - Has written several libraries
+    - Has written cross-browser Javascript code without dependencies
+  proficient_abilities:
+    - Has written Javascript in several paradigms (Object‑Oriented, Functional, Procedural)
+  master_abilities:
+    - 
+
+html:
+  name: HTML / CSS
+  shortname: HTML/CSS
+  category: Language
+  description: Fluency with HTML and CSS
+  novice_abilities:
+    - Can copy & paste HTML and CSS
+  advanced_beginner_abilities:
+    - Writes semantic HTML
+    - Can explain browsers' layout model and `display` values
+  competent_abilities:
+    - Employs Media Queries
+    - Knows which features of CSS are available on targeted browsers
+  proficient_abilities:
+    - Has written CSS in several contexts (Web, Mobile, Email)
+  master_abilities:
+    - 
+
+sql:
+  name: SQL and Relational Databases
+  shortname: SQL
+  category: Language
+  description: Fluency with SQL
+  novice_abilities:
+    - Can copy & paste SQL code
+  advanced_beginner_abilities:
+    - Can write `SELECT`, `UPDATE`, and `INSERT` commands
+    - Can modify schema manually
+    - Uses joins effectively
+  competent_abilities:
+    - Troubleshoots queries using `EXPLAIN`
+    - Uses indexes effectively
+    - Has used stored procedures, views, and triggers
+  proficient_abilities:
+    - Has normalized and denormalized schema
+    - Has maintained several production databases
+    - Thinks relationally
+  master_abilities:
+    - Contributes to an open source database
+
+git:
+  name: Git
+  shortname: Git
+  category: Tool
+  description: Dexterity with Git
+  novice_abilities:
+    - Can make commits with Git Tower
+  advanced_beginner_abilities:
+    - Can commit, push, pull, and merge from the command line
+    - Not afraid of losing commits
+    - Uses branches habitually
+  competent_abilities:
+    - Can explain reachability
+    - Can rebase effectively
+  proficient_abilities:
+    - Can rewrite history effortlessly
+    - Uses git to answer questions about code
+    - Has used git with different workflows
+  master_abilities:
+    - Understands Git's internals
+    - Contributes to git or libgit2
+
+shell:
+  name: Shell/Kernel
+  shortname: Shell
+  category: Tool
+  description: Dexterity with the Shell
+  novice_abilities:
+    - Can copy & paste commands into Terminal
+  advanced_beginner_abilities:
+    - Can customize environment with `.bashrc`
+    - Able to install C libraries with `make`
+    - Able to use a package manager
+  competent_abilities:
+    - Can troubleshoot `make`
+    - Uses pipes and redirection effectively
+  proficient_abilities:
+    - Has managed several servers
+    - Proficient with Chef, Puppet, or similar
+    - Experienced with different distributions of Linux
+  master_abilities:
+    - 
+
+editor:
+  name: Text Editor
+  shortname: Editor
+  category: Tool
+  description: Dexterity with a Text Editor
+  novice_abilities:
+    - Can use a text editor
+    - Knows few or no keyboard shortcuts
+  advanced_beginner_abilities:
+    - Uses keyboard shortcuts for opening files and moving the cursor
+  competent_abilities:
+    - Has learned to extend (with snippets, plugins, or bundles) editor
+  proficient_abilities:
+    - Has extensively customized editor
+    - Has optimized most common tasks
+  master_abilities:
+    - 
+
+rails:
+  name: Rails
+  shortname: Rails
+  category: Framework
+  description: Knowledge of Rails
+  novice_abilities:
+    - Can copy & paste Rails code
+  advanced_beginner_abilities:
+    - Writes idiomatic Rails code
+    - Uses MVC effectively
+  competent_abilities:
+    - Employs Rails' underlying objects (Renderers, Resolvers, Engines, Rack Middleware, etc)
+    - Uses Arel to construct scopes
+  proficient_abilities:
+    - Has maintained several Rails applications
+  master_abilities:
+    - Contributes to Rails
+
+angular:
+  name: Angular
+  shortname: Angular
+  category: Framework
+  description: Knowledge of Angular
+  novice_abilities:
+    - Can copy & paste Angular code
+  advanced_beginner_abilities:
+    - Works effectively with Angular concepts (Dependency Injection, Directives, Binding, etc)
+  competent_abilities:
+    - Has written libraries for Angular
+  proficient_abilities:
+    - Has worked on several Angular projects with different conventions for using Angular's components
+  master_abilities:
+    - Contributes to Angular
+
+http:
+  name: HTTP / Networking
+  shortname: HTTP
+  category: Framework
+  description: Knowledge of HTTP / Networking
+  novice_abilities:
+    - Aware of HTTP and TCP/IP
+  advanced_beginner_abilities:
+    - Knows common HTTP status codes, headers, and verbs
+  competent_abilities:
+    - Able to troubleshoot HTTP requests
+  proficient_abilities:
+    - Writes RESTful APIs
+  master_abilities:
+    - 
+
+oop:
+  name: Object-Oriented Programming
+  shortname: OOP
+  category: Technique
+  description: Mastery of Object-Oriented Programming techniques
+  novice_abilities:
+    - Able to write and use classes
+  advanced_beginner_abilities:
+    - Reasons well about inheritence
+    - Can compare inheritence and composition
+  competent_abilities:
+    - Knows and practices the SOLID principles
+    - Thinks in terms of messages rather than methods
+  proficient_abilities:
+    - Has implemented patterns many times
+  master_abilities:
+    - 
+
+tdd:
+  name: Testing
+  shortname: TDD
+  category: Technique
+  description: Mastery of Testing techniques
+  novice_abilities:
+    - Can copy and paste test code
+  advanced_beginner_abilities:
+    - Has written unit, functional, and integration tests
+    - Runs the test suite regularly before pushing changes
+  competent_abilities:
+    - Uses doubles and spies effectively
+    - Has attempted TDD in a discipled way
+    - Is familiar with different frameworks/approaches (Minitest, Rspec, Cucumber, Vows, Mocha, Jasmine, etc)
+  proficient_abilities:
+    - Has written tests in various frameworks (Minitest, Rspec, Cucumber, Vows, Mocha, Jasmine, etc)
+    - Testing influences the design of the code
+  master_abilities:
+    - 

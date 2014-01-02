@@ -1,0 +1,84 @@
+<%= form_tag nil, method: :put, class: "form-horizontal", id: "msform", role: "form" do %>
+
+  <div class="skill-name">
+    <div class="rotated-text">
+      <div id="skill_category"></div>
+      <div id="skill_name">Instructions</div>
+    </div>
+  </div>
+
+  <ul id="progressbar">
+    <li class="active">Instructions</li>
+    <% @skills.each do |skill| %>
+      <li><%= skill.shortname %></li>
+    <% end %>
+  </ul>
+  
+    <fieldset class="skill" data-skill-name="Instructions" data-skill-category="">
+      <div class="instructions">
+        <h2>Instructions</h2>
+        
+        <ul>
+          
+          <li>In general:
+            <dl>
+              <dt><img class="stat-rank" src="/novice.svg" /></dt><dd>is just getting started.</dd>
+              <dt><img class="stat-rank" src="/advanced-beginner.svg" /></dt><dd>has learned to recognize the most common scenarios and has memorize common commands. <span class="parenthetical">(This takes at least 6 months to attain with daily practice)</span></dd>
+              <dt><img class="stat-rank" src="/competent.svg" /></dt><dd>is now familiar with the <b>breadth</b> of the skill and has, for the first time, a good idea of what they <em>don't</em> know. <span class="parenthetical">(This takes at least 2 years to attain)</span></dd>
+              <dt><img class="stat-rank" src="/proficient.svg" /></dt><dd>has now practiced the skill enough to have <b>cached</b> their analysis of very many scenarios. <span class="parenthetical">(This takes 5-10 years to attain)</span></dd>
+              <dt><img class="stat-rank" src="/proficient.svg" /></dt><dd>has now practiced the skill enough to have cached their <b>response</b> to very many scenarios. <span class="parenthetical">(This takes 10 years to a lifetime to attain)</span></dd>
+            </dl>
+          </li>
+          
+          <li>Don't think of <img class="stat-rank" src="/novice.svg" /> as <b>zero</b>. Everyone at <img class="stat-rank" src="/novice.svg" /> has earned the title software developer, just hasn't honed this skill yet.</li>
+          
+          <li>Don't think of <img class="stat-rank" src="/master.svg" /> as an <b>A</b>. It can take a lifetime to master one skill; no one's supposed to get "Straight A's" on this.</li>
+          
+        </ul>
+      </div>
+      
+      <input type="button" name="previous" class="previous action-button" value="Previous" disabled />
+      <input type="button" name="next" class="next action-button" value="Next" />
+    </fieldset>
+    
+  <% @skills.each_with_index do |skill, i| %>
+    <fieldset class="skill" data-skill-name="<%= skill.name %>" data-skill-category="<%= skill.category %>">
+      <div class="stats-form">
+        <div class="stat-guides">
+          <% %w{novice advanced-beginner competent proficient master}.each do |level| %>
+            <div class="stat-guide <%= level %>">
+              <%= render partial: "explanation", locals: {
+                title: level,
+                abilities: skill.abilities(level.underscore) } %>
+              <img src="/<%= level %>.svg" />
+            </div>
+          <% end %>
+        </div>
+
+        <% @users.each do |user| %>
+          <div class="control-group">
+            <label for="user_<%= user.id %>_skill_<%= skill.id %>" class="control-label">
+              <%= avatar_for(user, size: 32) %>
+            </label>
+            <div class="controls">
+              <input id="user_<%= user.id %>_skill_<%= skill.id %>" name="user[<%= user.id %>][skill][<%= skill.id %>]" type="text" data-slider="true" value="<%= score_for(user, skill) %>" data-slider-range="0,100">
+              
+              <label class="score-pass" for="user_<%= user.id %>_skill_<%= skill.id %>_pass">
+                <input id="user_<%= user.id %>_skill_<%= skill.id %>_pass" name="user[<%= user.id %>][skill][<%= skill.id %>]" type="checkbox" class="score-pass-checkbox" data-disable="user_<%= user.id %>_skill_<%= skill.id %>" value="pass" <%= "checked" if pass_for?(user, skill) %> />
+                I don't know
+              </label>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <input type="button" name="previous" class="previous action-button" value="Previous" />
+      <% if i == @skills.length - 1 %>
+        <input type="submit" name="action" value="Submit" class="action-button" />
+      <% else %>
+        <input type="button" name="next" class="next action-button" value="Next" />
+      <% end %>
+
+    </fieldset>
+  <% end %>
+<% end %>

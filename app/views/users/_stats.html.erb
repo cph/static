@@ -1,12 +1,12 @@
-<div class="stats <%= "incomplete" unless stats.all?(&:complete?) %>">
+<div class="stats <%= "incomplete" unless stats.all?(&:completed?) %>">
   <% stats.each do |stat| %>
     <p class="stat">
       <span class="stat-name"><%= stat.name %></span>
       <span class="stat-level-thermometer stat-average-level">
-        <span class="stat-level-group stat-level-value <%= stat.rank %>" style="width: <%= stat.level || 0 %>%;"></span>
-        <span class="stat-level-personal stat-level-value <%= stat.rank %>" style="width: <%= stat.my_level || 0 %>%;"></span>
+        <span class="stat-level-group stat-level-value <%= rank(stat) %>" style="width: <%= stat.level || 0 %>%;"></span>
+        <span class="stat-level-personal stat-level-value <%= rank(stat) %>" style="width: <%= stat.my_level || 0 %>%;"></span>
       </span>
-      <img class="stat-rank" src="/<%= stat.rank %>.svg" />
+      <img class="stat-rank" src="/<%= rank(stat) %>.svg" />
     </p>
   <% end %>
   

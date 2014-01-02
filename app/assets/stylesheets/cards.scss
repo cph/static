@@ -27,6 +27,11 @@ $stat-width: 108px;
   display: block;
   font-size: 1.5em;
   margin-left: 100px;
+  
+  a { 
+    color: inherit;
+    &:hover { text-decoration: none; }
+  }
 }
 
 .card .avatar {
@@ -42,10 +47,6 @@ $stat-width: 108px;
   padding: 0;
   position: relative;
   clear: both;
-  
-  &.incomplete {
-    color: #e4e4e4;
-  }
 }
 
 .card .stat {
@@ -88,18 +89,23 @@ $stat-width: 108px;
 dl.stat-key {
   font-size: 0.75em;
   line-height: 1.25em;
-  margin: 20px 0 0 100px;
+  margin: 12px 0 0 100px;
   
   dt {
     display: inline-block;
     width: 6px;
     height: 6px;
-    margin: 0 5px 0 12px;
+    margin: 0 5px 0 0;
   }
   dd {
     margin: 0;
     display: inline;
     line-height: 1.25em;
+    
+    .stat-completion {
+      &::before { content: '('; }
+      &::after { content: ')'; }
+    }
     
     &::after {
       content: '\a';
@@ -150,8 +156,4 @@ dl.stat-key {
   font-size: 0.75em;
   line-height: 1.25em;
   margin: 0.5em 0;
-}
-
-.stats.incomplete .stat-guide {
-  background-color: rgba(0, 0, 0, 0.03);
 }

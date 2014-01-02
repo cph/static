@@ -1,0 +1,20 @@
+<div class="user card large">
+  <%= avatar_for(@user, size: 160) %>
+  <span class="user-name"><%= @user.name %></span>
+  
+  <% if show_group_assessment? and (show_group_assessment_before_complete? or @assessment.completed?)  %>
+    <dl class="stat-key">
+      <dt class="stat-level-group"></dt><dd>Group assessment <%= completion(of: @user) %></dd>
+      <dt class="stat-level-personal"></dt><dd>My assessment <%= completion(of: @user, by: current_user) %></dd>
+    </dl>
+
+    <%= render "users/stats", stats: @assessment.results(of: @user, by: current_user) %>
+  <% elsif @assessment.completed?(by: current_user) %>
+    <dl class="stat-key">
+      <dt class="stat-level-group"></dt><dd>Group assessment</dd>
+      <dt class="stat-level-personal"></dt><dd>My assessment <%= completion(of: @user, by: current_user) %></dd>
+    </dl>
+
+    <%= render "users/stats", stats: @assessment.results(of: @user, only_by: current_user) %>
+  <% end %>
+</div>
