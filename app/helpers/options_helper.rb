@@ -1,7 +1,7 @@
 module OptionsHelper
   
   def show_group_assessment?
-    false
+    true
   end
   
   def show_group_assessment_before_complete?
