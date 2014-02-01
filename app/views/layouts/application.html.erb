@@ -23,10 +23,12 @@
           <div class="container-fluid">
             <ul class="nav">
               <% if can?(:create, ManagerReview) %>
-              <li><%= link_to "Manager Reviews", manager_reviews_path %></li>
+                <li><%= link_to "Manager Reviews", manager_reviews_path %></li>
               <% end %>
-              <li><%= link_to "Sign Out", "/users/sign_out"  %></li>
-              <li><a><%= current_user.name %></a></li>
+              <% if current_user %>
+                <li><%= link_to "Sign Out", "/users/sign_out"  %></li>
+                <li><a><%= current_user.name %></a></li>
+              <% end %>
             </ul>
           </div>
         </div>
