@@ -7,6 +7,7 @@ class ManagerReviewMailer < ActionMailer::Base
     @token = reviewer.token
     @manager = reviewer.manager
     mail(
+      from: "static@concordia-publishing-house.mailgun.org",
       to: reviewer.email_address,
       subject: "Please complete your review of #{manager.name}"
     )

@@ -19,5 +19,14 @@ module Static
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    
+    config.action_mailer.smtp_settings = {
+      :port           => 587,
+      :address        => "smtp.mailgun.org",
+      :user_name      => "postmaster@concordia-publishing-house.mailgun.org",
+      :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+      :domain         => "concordia-publishing-house.mailgun.org",
+      :authentication => :plain,
+    }
   end
 end
