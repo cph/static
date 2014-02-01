@@ -1,4 +1,5 @@
 class ManagerReviewerController < ApplicationController
+  skip_before_filter :authenticate_user!
   before_filter :find_manager_reviewer!
   
   attr_reader :reviewer
