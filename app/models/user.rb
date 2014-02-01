@@ -44,4 +44,8 @@ class User < ActiveRecord::Base
       assessment: assessment)
   end
   
+  def pronoun
+    "he"
+  end
+  
 end

@@ -8,6 +8,8 @@ class ManagerReviewerController < ApplicationController
     return render :completed if reviewer.completed?
     
     @manager = reviewer.manager
+    @review = reviewer.review
+    @pronoun = @manager.pronoun.capitalize
   end
   
   
@@ -28,7 +30,7 @@ private
   end
   
   def review_params
-    params
+    params.require(:results)
   end
   
 end

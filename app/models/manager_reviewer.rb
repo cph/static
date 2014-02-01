@@ -9,6 +9,8 @@ class ManagerReviewer < ActiveRecord::Base
   after_create :invite_reviewer!
   after_update :complete_review!, if: :completed?
   
+  serialize :results, JSON
+  
   delegate :manager, to: :review
   
   
@@ -27,9 +29,9 @@ class ManagerReviewer < ActiveRecord::Base
   end
   
   
-  def complete!(params)
+  def complete!(results)
     self.completed_at = Time.now
-    
+    self.results = results
     save!
   end
   

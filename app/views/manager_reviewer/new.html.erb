@@ -1,6 +1,24 @@
 <h2>Review of <%= @manager.name %></h2>
 
 <%= form_tag do %>
-
+  <% @review.sections.each do |section| %>
+    <div class="review-section">
+      <h4><%= @manager.first_name %> <%= section.predicate %></h4>
+      
+      <%= likert_table section.questions.map { |question| "#{@pronoun} #{question}" } %>
+    </div>
+  <% end %>
+  
   <%= submit_tag "Complete Review", class: "btn btn-primary" %>
+<% end %>
+
+<% content_for :scripts do %>
+<script type="text/javascript">
+  $(function() {
+    $(':radio').click(function() {
+      var $radio = $(this);
+      $radio.closest('tr').addClass('completed');
+    });
+  });
+</script>
 <% end %>

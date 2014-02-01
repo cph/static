@@ -1,0 +1,49 @@
+.review-section {
+  margin: 2em 0;
+}
+
+.likert-fields {
+  
+  tr.completed {
+    background-color: rgb(238, 253, 232);
+    color: rgb(56, 139, 23);
+    
+    label:hover { background: transparent; }
+  }
+  
+  th.likert-field-question {
+    font-weight: normal;
+    text-align: left;
+    max-width: 15em;
+    width: 15em;
+    padding: 0.5em 2em;
+  }
+  
+  th.likert-field-response {
+    font-size: 0.88em;
+    line-height: 1em;
+    vertical-align: bottom;
+    padding: 0.5em 0;
+  }
+  
+  .likert-field-response {
+    max-width: 4em;
+    width: 4em;
+    min-width: 4em;
+    text-align: center;
+    position: relative;
+    
+    label {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      
+      &:hover {
+        background: rgba(255, 238, 170, 0.36);
+      }
+    }
+  }
+}
