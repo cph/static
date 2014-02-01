@@ -1,3 +1,7 @@
 <h2>Review on <%= format_date @review.date %></h2>
 
-<p>0 of <%= pluralize @review.reviewers.count, "reviewers" %> have completed the review.</p>
+<p><%= @review.reviewers.completed.count %> of <%= pluralize @review.reviewers.count, "reviewers" %> have completed the review.</p>
+
+<% if @review.completed? %>
+  Results...
+<% end %>

@@ -27,6 +27,16 @@ class ManagerReview < ActiveRecord::Base
   end
   
   
+  def completed?
+    completed_at.present?
+  end
+  
+  
+  def completed!
+    touch(:completed_at) if reviewers.all?(&:completed?)
+  end
+  
+  
 private
   
   def reviewers_must_be_valid

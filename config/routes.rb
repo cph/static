@@ -15,6 +15,7 @@ Static::Application.routes.draw do
   get "manager_reviews/:id", to: "manager_reviews#show", as: :manager_review
   
   get "manager_reviewer/:token", to: "manager_reviewer#new", as: :review_manager
+  post "manager_reviewer/:token", to: "manager_reviewer#create"
   
   # get "assessments/:assessment_id/users/:user_id/form", to: "scores#edit", as: :assessment_form
   # put "assessments/:assessment_id/users/:user_id/form", to: "scores#update"

@@ -7,12 +7,30 @@ class ManagerReviewer < ActiveRecord::Base
   
   before_validation :assign_token, on: :create
   after_create :invite_reviewer!
+  after_update :complete_review!, if: :completed?
   
   delegate :manager, to: :review
   
   
+  def self.completed
+    where(arel_table[:completed_at].not_eq(nil))
+  end
+  
+  
   def invite_reviewer!
     ManagerReviewMailer.reviewer_invitation(self).deliver!
+  end
+  
+  
+  def completed?
+    completed_at.present?
+  end
+  
+  
+  def complete!(params)
+    self.completed_at = Time.now
+    
+    save!
   end
   
   
@@ -27,6 +45,10 @@ private
   
   def assign_token
     self.token = SecureRandom.uuid.gsub("-", "")
+  end
+  
+  def complete_review!
+    review.completed!
   end
   
 end

@@ -7,6 +7,12 @@
         <%= format_date(review.date) %>
         (<%= review.reviewers.map(&:email_address).join(", ") %>)
       <% end %>
+      
+      <% if review.completed? %>
+        &mdash; Complete
+      <% else %>
+        &mdash; Incomplete
+      <% end %>
     </li>
   <% end %>
 </ul>
