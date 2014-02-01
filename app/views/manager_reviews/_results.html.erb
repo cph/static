@@ -1,0 +1,22 @@
+<% @review.sections.each do |section| %>
+  <div class="review-section">
+    <h4><%= @manager.first_name %> <%= section.predicate %></h4>
+    
+    <table class="likert-fields">
+      <%= likert_table_header %>
+      <tbody>
+        <% section.questions.each do |question| %>
+          <tr class="likert-field">
+            <th class="likert-field-question"><%= question %></th>
+            <td class="likert-field-response"><%= @review.results_for(question) %></td>
+            <td class="likert-field-response">&nbsp;</td>
+            <td class="likert-field-response">&nbsp;</td>
+            <td class="likert-field-response">&nbsp;</td>
+            <td class="likert-field-response">&nbsp;</td>
+            <td class="likert-field-response">&nbsp;</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

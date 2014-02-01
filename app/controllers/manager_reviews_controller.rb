@@ -19,6 +19,7 @@ class ManagerReviewsController < ApplicationController
   
   def show
     @review = ManagerReview.find params[:id]
+    @manager = @review.manager
   end
   
 private

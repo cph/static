@@ -38,7 +38,17 @@ class ManagerReview < ActiveRecord::Base
   
   
   def sections
-    @sections ||= MANAGER_REVIEW.map { |predicate, questions| Section.new(predicate, questions) }
+    @sections ||= begin
+      pronoun = manager.pronoun.capitalize
+      MANAGER_REVIEW.map do |predicate, questions|
+        Section.new(predicate, questions.map { |question| "#{pronoun} #{question}"})
+      end
+    end
+  end
+  
+  def results_for(question)
+    id = question.hash.to_s
+    reviewers.map { |reviewer| reviewer.results[id].to_i }.avg
   end
   
   

@@ -9,7 +9,6 @@ class ManagerReviewerController < ApplicationController
     
     @manager = reviewer.manager
     @review = reviewer.review
-    @pronoun = @manager.pronoun.capitalize
   end
   
   

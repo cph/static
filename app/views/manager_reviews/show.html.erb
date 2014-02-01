@@ -2,6 +2,4 @@
 
 <p><%= @review.reviewers.completed.count %> of <%= pluralize @review.reviewers.count, "reviewers" %> have completed the review.</p>
 
-<% if @review.completed? %>
-  Results...
-<% end %>
+<%= render "manager_reviews/results" if @review.completed? %>

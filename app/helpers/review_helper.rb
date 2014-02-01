@@ -14,16 +14,23 @@ module ReviewHelper
   def likert_table(questions)
     <<-HTML.html_safe
     <table class="likert-fields">
-      <thead>
-        <tr>
-          <td class="blank"></td>
-          #{LIKERT_RESPONSES.map { |value, text| "<th class=\"likert-field-response\">#{text}</th>" }.join}
-        </tr>
-      </thead>
+      #{likert_table_header}
       <tbody>
         #{questions.map { |question| likert_field(question) }.join}
       </tbody>
     </table>
+    HTML
+  end
+  
+  
+  def likert_table_header
+    <<-HTML.html_safe
+    <thead>
+      <tr>
+        <td class="blank">&nbsp;</td>
+        #{LIKERT_RESPONSES.map { |value, text| "<th class=\"likert-field-response\">#{text}</th>" }.join}
+      </tr>
+    </thead>
     HTML
   end
   

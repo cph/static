@@ -5,7 +5,7 @@
     <div class="review-section">
       <h4><%= @manager.first_name %> <%= section.predicate %></h4>
       
-      <%= likert_table section.questions.map { |question| "#{@pronoun} #{question}" } %>
+      <%= likert_table section.questions %>
     </div>
   <% end %>
   
