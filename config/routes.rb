@@ -9,6 +9,13 @@ Static::Application.routes.draw do
   
   get "assessments/:assessment_id/users/:user_id", to: "assessment#show", as: :user_assessment
   
+  get "manager_reviews", to: "manager_reviews#index", as: :manager_reviews
+  post "manager_reviews", to: "manager_reviews#create"
+  get "manager_reviews/new", to: "manager_reviews#new", as: :new_manager_review
+  get "manager_reviews/:id", to: "manager_reviews#show", as: :manager_review
+  
+  get "manager_reviewer/:token", to: "manager_reviewer#new", as: :review_manager
+  
   # get "assessments/:assessment_id/users/:user_id/form", to: "scores#edit", as: :assessment_form
   # put "assessments/:assessment_id/users/:user_id/form", to: "scores#update"
   

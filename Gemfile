@@ -6,6 +6,7 @@ gem "rails", "4.0.1"
 gem "pg"
 
 gem "airbrake"
+gem "cancan"
 gem "devise"
 gem "sucker_punch" # used by Airbrake to send notices asynchronously
 gem "unicorn-rails"

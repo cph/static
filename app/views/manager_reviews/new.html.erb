@@ -1,0 +1,19 @@
+<h2>New Manager Review</h2>
+
+<%= form_for @review do |f| %>
+  <% if @review.errors.any? %>
+    <div class="alert alert-block">
+      <ul>
+        <% @review.errors.full_messages.each do |error| %>
+          <li class="validation-error"><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :reviewer_emails, "List the Email Addresses of your Employees, one per line"%>
+  <%= f.text_area :reviewer_emails, rows: 6 %>
+  
+  <p>
+    <%= f.submit "Send Invitations", class: "btn btn-primary" %>
+  </p>
+<% end %>

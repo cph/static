@@ -22,6 +22,9 @@
           <a class="brand" href="#">Static</a>
           <div class="container-fluid">
             <ul class="nav">
+              <% if can?(:create, ManagerReview) %>
+              <li><%= link_to "Manager Reviews", manager_reviews_path %></li>
+              <% end %>
               <li><%= link_to "Sign Out", "/users/sign_out"  %></li>
               <li><a><%= current_user.name %></a></li>
             </ul>

@@ -1,0 +1,14 @@
+<h2>Manager Reviews</h2>
+
+<ul class="manager-reviews">
+  <% @manager_reviews.each do |review| %>
+    <li class="manager-review">
+      <%= link_to manager_review_path(review) do %>
+        <%= format_date(review.date) %>
+        (<%= review.reviewers.map(&:email_address).join(", ") %>)
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Review", new_manager_review_path, class: "btn btn-primary" %>
