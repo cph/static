@@ -33,7 +33,7 @@ class Assessment < ActiveRecord::Base
   def completion(of: nil, by: nil)
     if by
       assessment = user_assessments.by(by).first
-      return NaN unless assessment.completed?
+      return 0.0/0 if assessment.nil? or !assessment.completed?
       assessment.completion(of: of)
     else
       user_assessments.completed.to_a.average { |assessment| assessment.completion(of: of) }
@@ -52,7 +52,8 @@ class Assessment < ActiveRecord::Base
   
   def completed?(by: nil)
     if by
-      user_assessments.by(by).first.completed?
+      assessment = user_assessments.by(by).first
+      assessment && assessment.completed?
     else
       user_assessments.all?(&:completed?)
     end

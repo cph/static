@@ -1,3 +1,4 @@
+<% if @assessment.assessors.member?(current_user) %>
 <% if show_group_assessment? and (show_group_assessment_before_complete? or @assessment.completed?)  %>
   <ul id="users" class="cards">
     <% @users.each do |user| %>
@@ -36,4 +37,5 @@
   </ul>
 <% else %>
   <%= link_to "Begin Assessment", edit_assessment_path(@assessment), class: "btn btn-success btn-large" %>
+<% end %>
 <% end %>
