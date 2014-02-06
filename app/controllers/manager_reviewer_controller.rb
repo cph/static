@@ -17,7 +17,7 @@ class ManagerReviewerController < ApplicationController
     return redirect_to review_manager_path(token: reviewer.token) if reviewer.completed?
     
     reviewer.complete!(review_params)
-    redirect_to review_manager_path(reviewer)
+    redirect_to review_manager_path(token: reviewer.token)
   end
   
   
