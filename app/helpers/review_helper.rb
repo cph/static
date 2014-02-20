@@ -1,3 +1,5 @@
+require "digest/md5"
+
 module ReviewHelper
   
   
@@ -36,7 +38,7 @@ module ReviewHelper
   
   
   def likert_field(question)
-    id = question.hash
+    id = Digest::MD5.hexdigest(question)
     
     <<-HTML.html_safe
       <tr class="likert-field">

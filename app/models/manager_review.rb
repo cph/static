@@ -1,3 +1,5 @@
+require "digest/md5"
+
 class ManagerReview < ActiveRecord::Base
   
   belongs_to :manager
@@ -47,7 +49,7 @@ class ManagerReview < ActiveRecord::Base
   end
   
   def results_for(question)
-    id = question.hash.to_s
+    id = Digest::MD5.hexdigest(question)
     reviewers.map { |reviewer| reviewer.results[id].to_i }.avg
   end
   
