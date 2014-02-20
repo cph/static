@@ -23,7 +23,7 @@
     font-size: 0.88em;
     line-height: 1em;
     vertical-align: bottom;
-    padding: 0.5em 0;
+    padding: 0.5em;
   }
   
   .likert-field-responses {
@@ -44,8 +44,17 @@
       &.average-value {
         background: rgb(255, 194, 37);
         background: #FF7325;
+        background: #FF5125;
         font-size: 10px;
       }
+    }
+    
+    .guide {
+      position: absolute;
+      border-left: 1px solid #eee;
+      width: 1px;
+      top: 0;
+      bottom: 0;
     }
   }
   
