@@ -50,7 +50,18 @@ class ManagerReview < ActiveRecord::Base
   
   def results_for(question)
     id = Digest::MD5.hexdigest(question)
-    reviewers.map { |reviewer| reviewer.results[id].to_i }.avg
+    reviewers
+      .map { |reviewer| reviewer.results[id] }
+      .select { |result| !result.blank? }
+      .map(&:to_i)
+  end
+  
+  def grouped_results_for(question)
+    results_for(question).histogram
+  end
+  
+  def average_result_for(question)
+    results_for(question).avg
   end
   
   

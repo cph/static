@@ -8,11 +8,12 @@
         <% section.questions.each do |question| %>
           <tr class="likert-field">
             <th class="likert-field-question"><%= question %></th>
-            <td class="likert-field-response"><%= @review.results_for(question) %></td>
-            <td class="likert-field-response">&nbsp;</td>
-            <td class="likert-field-response">&nbsp;</td>
-            <td class="likert-field-response">&nbsp;</td>
-            <td class="likert-field-response">&nbsp;</td>
+            <td class="likert-field-responses" colspan="5">
+              <% @review.grouped_results_for(question).each do |value, count| %>
+                <div class="value" style="margin-left: <%= offset(value) %>%; font-size: <%= count %>em;"></div>
+              <% end %>
+              <div class="value average-value" style="margin-left: <%= offset(@review.average_result_for(question)) %>%"></div>
+            </td>
             <td class="likert-field-response">&nbsp;</td>
           </tr>
         <% end %>

@@ -26,6 +26,29 @@
     padding: 0.5em 0;
   }
   
+  .likert-field-responses {
+    position: relative;
+    font-size: 12px;
+    
+    .value { 
+      position: absolute;
+      border-radius: 1em;
+      width: 1em;
+      height: 1em;
+      background: rgba(26, 185, 64, 0.14);
+      background: rgba(26, 185, 160, 0.17);
+      top: -0.5em;
+      left: -0.5em;
+      margin-top: 24px;
+      
+      &.average-value {
+        background: rgb(255, 194, 37);
+        background: #FF7325;
+        font-size: 10px;
+      }
+    }
+  }
+  
   .likert-field-response {
     max-width: 4em;
     width: 4em;

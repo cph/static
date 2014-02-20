@@ -59,4 +59,9 @@ module ReviewHelper
   end
   
   
+  def offset(score)
+    ((score + 2) / 0.04) * 0.8 + 10
+  end
+  
+  
 end

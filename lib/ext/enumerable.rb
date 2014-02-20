@@ -9,4 +9,8 @@ module Enumerable
   end
   alias :avg :average
   
+  def histogram
+    Hash[*group_by { |v| v }.flat_map { |k, v| [k, v.size] }]
+  end
+  
 end
