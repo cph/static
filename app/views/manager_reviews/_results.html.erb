@@ -9,14 +9,14 @@
           <tr class="likert-field">
             <th class="likert-field-question"><%= question %></th>
             <td class="likert-field-responses" colspan="5">
-              <% @review.grouped_results_for(question).each do |value, count| %>
-                <div class="value" style="margin-left: <%= offset(value) %>%; font-size: <%= count %>em;"></div>
-              <% end %>
-              <div class="value average-value" style="margin-left: <%= offset(@review.average_result_for(question)) %>%"></div>
               <div class="guide" style="margin-left: 20%"></div>
               <div class="guide" style="margin-left: 40%"></div>
               <div class="guide" style="margin-left: 60%"></div>
               <div class="guide" style="margin-left: 80%"></div>
+              <% @review.grouped_results_for(question).each do |value, count| %>
+                <div class="value" style="margin-left: <%= offset(value) %>%; font-size: <%= count %>em;"></div>
+              <% end %>
+              <div class="value average-value" style="margin-left: <%= offset(@review.average_result_for(question)) %>%"></div>
             </td>
             <td class="likert-field-response">&nbsp;</td>
           </tr>
