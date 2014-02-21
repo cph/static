@@ -1,4 +1,5 @@
 class ManagerReviewsController < ApplicationController
+  skip_before_filter :authenticate_user!, only: [:show]
   
   def index
     @manager_reviews = ManagerReview.for(current_user)
